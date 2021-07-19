@@ -36,7 +36,7 @@ impl PnPDetectWindows {
             hwnd: std::ptr::null_mut(),
         };
         pnp_detect.create_window();
-        return pnp_detect;
+        pnp_detect
     }
 
     fn handle_hotplug_event(&mut self) {
@@ -60,10 +60,10 @@ impl PnPDetectWindows {
 
     /// Get a list of currently connected USB devices
     fn read_device_list() -> Result<HashSet<String>> {
-        Ok(rusb::devices()?
+        rusb::devices()?
             .iter()
-            .map(|device| device2str(device).ok_or(anyhow!("Cannot get device Ids")))
-            .collect::<std::result::Result<_, _>>()?)
+            .map(|device| device2str(device).ok_or_else(|| anyhow!("Cannot get device Ids")))
+            .collect::<std::result::Result<_, _>>()
     }
 
     /// Detect USB events: just run a Windows event loop
@@ -101,7 +101,7 @@ impl PnPDetectWindows {
             }
             _ => return DefWindowProcW(hwnd, msg, wparam, lparam),
         }
-        return 0;
+        0
     }
 
     /// Create an invisible window to handle WM_DEVICECHANGE message

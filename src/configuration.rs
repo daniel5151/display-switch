@@ -30,7 +30,19 @@ struct PerMonitorConfiguration {
 }
 
 #[derive(Debug, Deserialize)]
+pub struct Spotify {
+    pub spotify_client_id: String,
+    pub spotify_client_secret: String,
+    pub spotify_redirect_uri: String,
+
+    pub spotify_on_usb_connect: String,
+    pub spotify_on_usb_disconnect: String,
+}
+
+#[derive(Debug, Deserialize)]
 pub struct Configuration {
+    #[serde(flatten)]
+    pub spotify: Spotify,
     #[serde(deserialize_with = "Configuration::deserialize_usb_device")]
     pub usb_device: String,
     #[serde(flatten)]

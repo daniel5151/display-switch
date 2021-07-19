@@ -15,6 +15,7 @@ mod display_control;
 mod input_source;
 mod logging;
 mod platform;
+mod spotify;
 mod usb;
 
 fn main() -> Result<()> {

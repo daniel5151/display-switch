@@ -5,6 +5,8 @@
 
 A _really_ scuffed fork of `display-switch` that will automatically transfer spotify playback.
 
+**Don't actually use this fork! Use [daniel5151/music-transfer](https://github.com/daniel5151/music-transfer) instead!**
+
 It works, but just barely. I've already been using it locally for over a month, and i'd wager that it works a solid 95% of the time (i.e: I do need to kick it back on occasionally).
 
 Maybe i'll polish up this fork up a bit at some point, but probably not lol
